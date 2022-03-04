@@ -12,9 +12,4 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    HiddenHttpMethodFilter hiddenHttpMethodFilter(){
-        return new HiddenHttpMethodFilter();
-    }
-
 }
