@@ -4,12 +4,14 @@ package org.springboot.service;
 import org.springboot.model.User;
 import org.springboot.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Component
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
-
     @Autowired
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
@@ -17,16 +19,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> index() {
-        return userDao.findAll();
+        return userDao.index();
     }
 
     @Override
-    public User showUserById(Long id) {
-        return userDao.getById(id);
+    public User showUserById(long id) {
+        return userDao.showUserById(id);
     }
 
-    @Override
-    public void save(User user) {
+    public void save(User user){
         userDao.save(user);
     }
 
@@ -35,8 +36,7 @@ public class UserServiceImpl implements UserService {
         userDao.update(id,user);
     }
 
-    @Override
-    public void delete(long id) {
-        userDao.delete(showUserById(id));
+    public void delete(long id){
+        userDao.delete(id);
     }
 }
